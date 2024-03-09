@@ -337,8 +337,13 @@ def calc_plot(data, column:str, y_label:str, filter_column:list, step=0, minx=0,
     elif action_company == "only_company":
         data = data[data["company"]==company]
 
+    # создадим полотно для графика и определим сборные списки
+    plt.figure(figsize=(16, 11))
+    boxplot = []
+    xticks = []
+
     # соберем данные через фильтрацию данных
-    for number, col in enumerate(filter_column, 1):
+    for col in filter_column:
         for wet in ["влажный", "сухой"]:
 
             # отфильтруем данные по столбцу
